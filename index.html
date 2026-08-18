@@ -16,12 +16,5 @@
       </nav>
     </section>
   </main>
-  <script>
-    fetch('assets/home-screen.webp?v=20260818-1')
-      .then((response) => response.text())
-      .then((base64) => {
-        document.querySelector('.home-stage').style.backgroundImage = `url("data:image/webp;base64,${base64.trim()}")`;
-      });
-  </script>
 </body>
 </html>
