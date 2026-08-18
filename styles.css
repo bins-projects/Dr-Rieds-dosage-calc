@@ -2,7 +2,7 @@
 html, body { margin: 0; min-height: 100%; background: #1b130e; }
 body { min-height: 100svh; }
 .home-shell { min-height: 100svh; display: grid; place-items: center; overflow: hidden; background: #1b130e; }
-.home-stage { position: relative; width: min(100vw, 177.78svh); aspect-ratio: 16 / 9; background: url("assets/home-screen.webp") center/cover no-repeat; overflow: hidden; }
+.home-stage { position: relative; width: min(100vw, 177.78svh); aspect-ratio: 16 / 9; background: url("assets/home-screen.jpg") center/cover no-repeat; overflow: hidden; }
 .home-actions { position: absolute; left: 7.8%; top: 27%; width: 27%; display: grid; gap: clamp(10px, 1.15vw, 19px); }
 .home-action { display: block; width: max-content; max-width: 100%; color: #4b2d18; text-decoration: none; font: 700 clamp(18px, 1.8vw, 32px)/1.1 "Segoe Print", "Bradley Hand", "Comic Sans MS", cursive; text-shadow: 0 1px rgba(255,255,255,.5); transform: rotate(-1deg); }
 .home-action::after { content: ""; display: block; height: 2px; margin-top: .12em; background: rgba(75,45,24,.58); transform: rotate(.5deg); }
