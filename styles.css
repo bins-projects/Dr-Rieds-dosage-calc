@@ -1,0 +1,14 @@
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; background: #1b130e; }
+body { min-height: 100svh; font-family: Georgia, "Times New Roman", serif; }
+.home-shell { min-height: 100svh; display: grid; place-items: center; overflow: hidden; background: #1b130e; }
+.home-stage { position: relative; width: min(100vw, 177.78svh); aspect-ratio: 16 / 9; background: url("assets/home-screen.jpg") center/cover no-repeat; }
+.home-actions { position: absolute; left: 7.5%; top: 29%; width: 25%; display: grid; gap: clamp(8px, 1vw, 16px); }
+.home-action { display: block; width: fit-content; min-width: 56%; padding: clamp(7px, .7vw, 13px) clamp(13px, 1.2vw, 23px); border: 2px solid rgba(87, 52, 25, .72); border-radius: 10px; color: #4b2d18; background: rgba(255, 238, 192, .82); box-shadow: 0 2px 0 rgba(80, 48, 24, .28); font-size: clamp(15px, 1.55vw, 28px); font-weight: 700; text-decoration: none; text-align: center; text-shadow: 0 1px rgba(255,255,255,.7); }
+.home-action.primary { background: rgba(255, 225, 150, .94); }
+.home-action:hover, .home-action:focus-visible { transform: translateY(-1px); background: rgba(255, 243, 205, .98); outline: 3px solid rgba(255,255,255,.5); outline-offset: 2px; }
+.home-action.disabled { opacity: .68; cursor: default; }
+@media (max-aspect-ratio: 1/1) {
+  .home-shell { align-content: start; }
+  .home-stage { width: 177.78svh; max-width: none; transform-origin: top left; }
+}
