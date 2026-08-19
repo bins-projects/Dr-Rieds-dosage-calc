@@ -4,7 +4,7 @@
 
   const groups=[
     ['Medication Doses',['basic-dose','reconstitution','meq-ml']],
-    ['Pediatric & Weight-Based',['weight-dose','peds-weight-liquid','daily-divided']],
+    ['Pediatric & Weight-Based',['weight-dose','peds-safe-range','daily-divided']],
     ['IV Rates & Timing',['mlhr-hours','mlhr-minutes','infusion-time','completion-time','gtt-volume-time','gtt-from-mlhr','mlhr-from-gtt']],
     ['Critical-Care Infusions',['units-hour','mcg-minute','mcg-kg-minute','amount-hour']]
   ];
