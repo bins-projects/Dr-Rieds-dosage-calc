@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Instructor Quiz Builder · Dr. Reid's Dosage Calc Pro</title>
+  <link rel="stylesheet" href="instructor.css?v=20260819-1">
+</head>
+<body>
+  <main class="shell">
+    <a class="home-link" href="index.html">← Home</a>
+    <section class="panel">
+      <header>
+        <p class="eyebrow">Instructor Mode</p>
+        <h1>Build a Fixed Quiz</h1>
+        <p>Generate once, review the exact questions, then publish the frozen set for every student.</p>
+      </header>
+
+      <section class="builder" id="builder">
+        <label class="field">Quiz title
+          <input id="quiz-title" value="Dr. Reid - Dosage Check">
+        </label>
+
+        <fieldset>
+          <legend>Question types</legend>
+          <div id="type-list" class="type-list"></div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Questions</legend>
+          <div class="count-row">
+            <label><input type="radio" name="count" value="5"> 5</label>
+            <label><input type="radio" name="count" value="10"> 10</label>
+            <label><input type="radio" name="count" value="15"> 15</label>
+            <label><input type="radio" name="count" value="20" checked> 20</label>
+            <label><input type="radio" name="count" value="25"> 25</label>
+          </div>
+        </fieldset>
+
+        <div class="actions">
+          <button id="generate" class="primary">Generate Draft</button>
+          <button id="clear" class="secondary">Clear</button>
+        </div>
+        <p id="status" class="status" aria-live="polite"></p>
+      </section>
+
+      <section id="review" class="review" hidden>
+        <div class="review-head">
+          <div>
+            <p class="eyebrow">Draft Review</p>
+            <h2 id="review-title"></h2>
+          </div>
+          <button id="regenerate" class="secondary">Regenerate All</button>
+        </div>
+        <div id="question-list"></div>
+        <div class="publish-bar">
+          <label class="approval"><input id="approved" type="checkbox"> I reviewed this exact set and approve it for students.</label>
+          <button id="publish" class="primary" disabled>Approve & Publish</button>
+        </div>
+        <p id="publish-status" class="status" aria-live="polite"></p>
+      </section>
+    </section>
+  </main>
+  <script src="instructor.js?v=20260819-1"></script>
+</body>
+</html>
