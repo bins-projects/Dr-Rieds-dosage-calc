@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Instructor Quiz Builder · Dr. Reid's Dosage Calc Pro</title>
-  <link rel="stylesheet" href="instructor.css?v=20260819-2">
+  <link rel="stylesheet" href="instructor.css?v=20260819-3">
 </head>
 <body>
   <main class="shell">
@@ -20,6 +20,15 @@
         <label class="field">Quiz title
           <input id="quiz-title" value="Dr. Reid - Dosage Check">
         </label>
+
+        <fieldset>
+          <legend>Difficulty</legend>
+          <div class="count-row">
+            <label><input type="radio" name="difficulty" value="easy"> Easy</label>
+            <label><input type="radio" name="difficulty" value="standard" checked> Standard</label>
+            <label><input type="radio" name="difficulty" value="challenge"> Challenge</label>
+          </div>
+        </fieldset>
 
         <fieldset>
           <legend>Question types</legend>
@@ -61,6 +70,6 @@
       </section>
     </section>
   </main>
-  <script src="instructor.js?v=20260819-2"></script>
+  <script src="instructor.js?v=20260819-3"></script>
 </body>
 </html>
