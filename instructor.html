@@ -38,6 +38,7 @@
         <fieldset>
           <legend>Questions</legend>
           <div class="count-row">
+            <label><input type="radio" name="count" value="1"> 1</label>
             <label><input type="radio" name="count" value="5"> 5</label>
             <label><input type="radio" name="count" value="10"> 10</label>
             <label><input type="radio" name="count" value="15"> 15</label>
@@ -59,7 +60,10 @@
             <p class="eyebrow">Draft Review</p>
             <h2 id="review-title"></h2>
           </div>
-          <button id="regenerate" class="secondary">Regenerate All</button>
+          <div class="actions">
+            <button id="project-question" class="primary">Project Question</button>
+            <button id="regenerate" class="secondary">Regenerate All</button>
+          </div>
         </div>
         <div id="question-list"></div>
         <div class="publish-bar">
@@ -71,5 +75,6 @@
     </section>
   </main>
   <script src="instructor.js?v=20260819-3"></script>
+  <script src="projector-launch.js?v=20260819-1"></script>
 </body>
 </html>
