@@ -13,7 +13,8 @@
   },
   "kv_namespaces": [
     {
-      "binding": "INSTRUCTOR_QUIZZES"
+      "binding": "INSTRUCTOR_QUIZZES",
+      "id": "a651fa8e1e35435c858c8ad2939f08f5"
     }
   ]
 }
