@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dr. Reid's Dosage Calc Pro — Preview</title>
+  <link rel="stylesheet" href="../lab.css?v=20260819-preview-1">
+  <style>
+    .type-groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(7px,.7vw,12px) clamp(12px,1.1vw,20px)}
+    .type-group{padding:clamp(5px,.5vw,8px) 0;border-bottom:1px solid rgba(49,67,89,.16)}
+    .type-group h4{margin:0 0 clamp(3px,.35vw,6px);color:#1d3556;font-size:clamp(9px,.9vw,15px)}
+    .type-group-grid{display:grid;grid-template-columns:1fr;gap:clamp(3px,.32vw,5px)}
+    @media(max-aspect-ratio:1/1){.type-groups{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <main class="dosage-lab-shell">
+    <section class="dosage-lab-stage" aria-label="Dosage calculation classroom">
+      <a class="home-link" href="../index.html">← Home</a>
+      <section id="app" class="board dosage-board" aria-live="polite"></section>
+    </section>
+  </main>
+  <script src="lab.js?v=20260819-preview-1"></script>
+  <script src="lab-groups.js?v=20260819-preview-1"></script>
+</body>
+</html>
