@@ -65,7 +65,7 @@
     draft.status='published'; draft.publishedAt=new Date().toISOString();
     publish.disabled=true; publishStatus.textContent='Publishing…';
     try{
-      const res=await fetch('/api/instructor-quizzes',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(draft)});
+      const res=await fetch('/instructor-api/instructor-quizzes',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(draft)});
       if(!res.ok) throw new Error(`HTTP ${res.status}`);
       const data=await res.json();
       publishStatus.textContent=`Published. Students can now open “${draft.title}”.`;
@@ -74,7 +74,7 @@
       draft.status='approved';
       const blob=new Blob([JSON.stringify(draft,null,2)],{type:'application/json'});
       const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download=`${draft.id}.json`; a.click(); URL.revokeObjectURL(url);
-      publishStatus.textContent='Cloudflare publish endpoint is not connected yet, so the approved quiz JSON was downloaded instead.';
+      publishStatus.textContent='Secure publish endpoint is not available yet, so the approved quiz JSON was downloaded instead.';
       publish.disabled=false;
     }
   }
