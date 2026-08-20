@@ -9,7 +9,8 @@
   function renderFields(vars){varsEl.innerHTML='';Object.entries(vars||{}).filter(([k])=>!editableSkip.has(k)).forEach(([k,v])=>{const lab=document.createElement('label');lab.textContent=pretty(k);const input=document.createElement('input');input.dataset.key=k;input.value=v;input.type=typeof v==='number'?'number':'text';if(typeof v==='number')input.step='any';lab.appendChild(input);varsEl.appendChild(lab)})}
   function readVars(){const out={...(current?.vars||{})};varsEl.querySelectorAll('[data-key]').forEach(input=>{out[input.dataset.key]=input.type==='number'?Number(input.value):input.value});return out}
   function hidePanels(){answerEl.hidden=true;formulaEl.hidden=true;formulaEl.textContent='';formulaBtn.textContent='Show Formula'}
-  function show(q,refreshFields=true){current=q;labelEl.textContent=q.type;problemEl.textContent=q.prompt;answerEl.innerHTML=`<strong>Answer:</strong> ${q.answer}${q.unit?` ${q.unit}`:''}<br><span>${q.solution}</span>`;hidePanels();if(refreshFields)renderFields(q.vars||{})}
+  function solutionMarkup(q){return `<strong>Answer:</strong> ${q.answer}${q.unit?` ${q.unit}`:''}<div class="formula-help"><strong>Formula:</strong> ${q.formula||''}</div><div class="solution"><strong>Worked equation:</strong><br>${String(q.solution||'').replace(/\n/g,'<br>')}</div>`}
+  function show(q,refreshFields=true){current=q;labelEl.textContent=q.type;problemEl.textContent=q.prompt;answerEl.innerHTML=solutionMarkup(q);hidePanels();if(refreshFields)renderFields(q.vars||{})}
   function randomQuestion(){show(E.generate(typeEl.value,difficultyEl.value),true)}
   function applyVars(){show(E.rebuild(typeEl.value,readVars(),current),true)}
   typeEl.addEventListener('change',randomQuestion);
@@ -17,6 +18,6 @@
   document.querySelector('#new-question').addEventListener('click',randomQuestion);
   document.querySelector('#apply-vars').addEventListener('click',applyVars);
   document.querySelector('#reveal').addEventListener('click',()=>{answerEl.hidden=!answerEl.hidden});
-  formulaBtn.addEventListener('click',()=>{if(formulaEl.hidden){formulaEl.textContent=current?.formula||'';formulaEl.hidden=false;formulaBtn.textContent='Hide Formula'}else{formulaEl.hidden=true;formulaBtn.textContent='Show Formula'}});
+  formulaBtn.addEventListener('click',()=>{if(formulaEl.hidden){formulaEl.innerHTML=`<strong>Formula:</strong> ${current?.formula||''}`;formulaEl.hidden=false;formulaBtn.textContent='Hide Formula'}else{formulaEl.hidden=true;formulaBtn.textContent='Show Formula'}});
   randomQuestion();
 })();
