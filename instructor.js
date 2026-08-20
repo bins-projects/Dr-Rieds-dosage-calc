@@ -9,26 +9,70 @@
   const byDifficulty=(easy,standard,challenge)=>difficulty()==='easy'?easy:difficulty()==='challenge'?challenge:standard;
 
   function basicDose(){
-    const templates=byDifficulty(
-      [
-        {drug:'acetaminophen',have:325,qty:1,unit:'tablets',route:'PO',orders:[325,650]},
-        {drug:'amoxicillin',have:250,qty:5,unit:'mL',route:'PO',orders:[250,500]}
-      ],
-      [
-        {drug:'cephalexin',have:250,qty:5,unit:'mL',route:'PO',orders:[125,250,375,500]},
-        {drug:'ondansetron',have:4,qty:2,unit:'mL',route:'IV',orders:[2,4,6,8]},
-        {drug:'furosemide',have:20,qty:2,unit:'mL',route:'IV',orders:[10,20,30,40]},
-        {drug:'amoxicillin',have:250,qty:5,unit:'mL',route:'PO',orders:[125,250,375,500]}
-      ],
-      [
-        {drug:'amoxicillin',have:250,qty:5,unit:'mL',route:'PO',orders:[175,225,325,425]},
-        {drug:'prednisone',have:10,qty:1,unit:'tablets',route:'PO',orders:[12.5,17.5,22.5,27.5]},
-        {drug:'ondansetron',have:4,qty:2,unit:'mL',route:'IV',orders:[3.5,5.5,7.5]}
-      ]
-    );
-    const t={...pick(templates)},order=pick(t.orders);delete t.orders;
-    const a=round(order/t.have*t.qty,2);
-    const c={...t,order};
+    const easy=[
+      {drug:'acetaminophen',order:325,have:325,qty:1,unit:'tablet',route:'PO'},
+      {drug:'acetaminophen',order:650,have:325,qty:1,unit:'tablets',route:'PO'},
+      {drug:'amoxicillin',order:250,have:250,qty:5,unit:'mL',route:'PO'},
+      {drug:'amoxicillin',order:500,have:250,qty:5,unit:'mL',route:'PO'},
+      {drug:'cephalexin',order:250,have:250,qty:5,unit:'mL',route:'PO'},
+      {drug:'cephalexin',order:500,have:250,qty:5,unit:'mL',route:'PO'},
+      {drug:'ondansetron',order:4,have:4,qty:2,unit:'mL',route:'IV'},
+      {drug:'furosemide',order:20,have:20,qty:2,unit:'mL',route:'IV'},
+      {drug:'furosemide',order:40,have:20,qty:2,unit:'mL',route:'IV'},
+      {drug:'diphenhydramine',order:25,have:50,qty:1,unit:'mL',route:'IV'},
+      {drug:'diphenhydramine',order:50,have:50,qty:1,unit:'mL',route:'IV'},
+      {drug:'dexamethasone',order:4,have:4,qty:1,unit:'mL',route:'IV'},
+      {drug:'ketorolac',order:15,have:15,qty:1,unit:'mL',route:'IV'},
+      {drug:'ketorolac',order:30,have:30,qty:1,unit:'mL',route:'IV'},
+      {drug:'prednisone',order:10,have:10,qty:1,unit:'tablet',route:'PO'},
+      {drug:'prednisone',order:20,have:10,qty:1,unit:'tablets',route:'PO'}
+    ];
+    const standard=[
+      {drug:'acetaminophen',order:325,have:325,qty:1,unit:'tablet',route:'PO'},
+      {drug:'acetaminophen',order:650,have:325,qty:1,unit:'tablets',route:'PO'},
+      {drug:'amoxicillin',order:250,have:125,qty:5,unit:'mL',route:'PO'},
+      {drug:'amoxicillin',order:500,have:125,qty:5,unit:'mL',route:'PO'},
+      {drug:'amoxicillin',order:250,have:250,qty:5,unit:'mL',route:'PO'},
+      {drug:'amoxicillin',order:500,have:250,qty:5,unit:'mL',route:'PO'},
+      {drug:'amoxicillin',order:875,have:250,qty:5,unit:'mL',route:'PO'},
+      {drug:'cephalexin',order:250,have:125,qty:5,unit:'mL',route:'PO'},
+      {drug:'cephalexin',order:500,have:125,qty:5,unit:'mL',route:'PO'},
+      {drug:'cephalexin',order:250,have:250,qty:5,unit:'mL',route:'PO'},
+      {drug:'cephalexin',order:500,have:250,qty:5,unit:'mL',route:'PO'},
+      {drug:'ondansetron',order:4,have:4,qty:2,unit:'mL',route:'IV'},
+      {drug:'furosemide',order:20,have:20,qty:2,unit:'mL',route:'IV'},
+      {drug:'furosemide',order:40,have:20,qty:2,unit:'mL',route:'IV'},
+      {drug:'furosemide',order:80,have:20,qty:2,unit:'mL',route:'IV'},
+      {drug:'diphenhydramine',order:10,have:50,qty:1,unit:'mL',route:'IV'},
+      {drug:'diphenhydramine',order:25,have:50,qty:1,unit:'mL',route:'IV'},
+      {drug:'diphenhydramine',order:50,have:50,qty:1,unit:'mL',route:'IV'},
+      {drug:'dexamethasone',order:4,have:4,qty:1,unit:'mL',route:'IV'},
+      {drug:'dexamethasone',order:8,have:4,qty:1,unit:'mL',route:'IV'},
+      {drug:'dexamethasone',order:10,have:10,qty:1,unit:'mL',route:'IV'},
+      {drug:'ketorolac',order:15,have:15,qty:1,unit:'mL',route:'IV'},
+      {drug:'ketorolac',order:15,have:30,qty:1,unit:'mL',route:'IV'},
+      {drug:'ketorolac',order:30,have:30,qty:1,unit:'mL',route:'IV'},
+      {drug:'prednisone',order:10,have:10,qty:1,unit:'tablet',route:'PO'},
+      {drug:'prednisone',order:20,have:10,qty:1,unit:'tablets',route:'PO'},
+      {drug:'prednisone',order:30,have:10,qty:1,unit:'tablets',route:'PO'},
+      {drug:'prednisone',order:40,have:10,qty:1,unit:'tablets',route:'PO'}
+    ];
+    const challenge=[
+      {drug:'amoxicillin',order:375,have:250,qty:5,unit:'mL',route:'PO'},
+      {drug:'amoxicillin',order:625,have:250,qty:5,unit:'mL',route:'PO'},
+      {drug:'cephalexin',order:375,have:250,qty:5,unit:'mL',route:'PO'},
+      {drug:'cephalexin',order:375,have:125,qty:5,unit:'mL',route:'PO'},
+      {drug:'diphenhydramine',order:12.5,have:50,qty:1,unit:'mL',route:'IV'},
+      {drug:'diphenhydramine',order:37.5,have:50,qty:1,unit:'mL',route:'IV'},
+      {drug:'dexamethasone',order:6,have:4,qty:1,unit:'mL',route:'IV'},
+      {drug:'dexamethasone',order:7.5,have:10,qty:1,unit:'mL',route:'IV'},
+      {drug:'ketorolac',order:15,have:30,qty:1,unit:'mL',route:'IV'},
+      {drug:'prednisone',order:12.5,have:10,qty:1,unit:'tablets',route:'PO'},
+      {drug:'prednisone',order:17.5,have:10,qty:1,unit:'tablets',route:'PO'},
+      {drug:'prednisone',order:27.5,have:10,qty:1,unit:'tablets',route:'PO'}
+    ];
+    const c={...pick(byDifficulty(easy,standard,challenge))};
+    const a=round(c.order/c.have*c.qty,2);
     return q('basic-dose','Basic medication dose',`A patient has an order for ${c.drug} ${c.order} mg ${c.route}. Available: ${c.have} mg per ${c.qty} ${c.unit}. How many ${c.unit} should the nurse administer?`,a,c.unit,'Desired ÷ Have × Quantity = amount to give','Match the ordered dose to the concentration on hand.',`(${c.order} ÷ ${c.have}) × ${c.qty} = ${a} ${c.unit}`,.06,c)
   }
 
@@ -90,12 +134,12 @@
   const questionCount=()=>+(document.querySelector('input[name="count"]:checked')?.value||20);
   const slug=s=>s.toLowerCase().trim().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,60)||`quiz-${Date.now()}`;
   const fingerprint=x=>`${x.key}|${String(x.prompt).toLowerCase().replace(/\s+/g,' ').trim()}`;
-  function uniqueFrom(def,used,maxAttempts=120){let x;for(let n=0;n<maxAttempts;n++){x=def.random();if(!used.has(fingerprint(x)))return x}return x}
-  function buildQuestion(keys,index,used){const available=defs.filter(t=>keys.includes(t.key)),def=available[index%available.length],x=uniqueFrom(def,used);used.add(fingerprint(x));return x}
+  function uniqueFrom(def,used,maxAttempts=400){let x;for(let n=0;n<maxAttempts;n++){x=def.random();if(!used.has(fingerprint(x)))return x}return null}
+  function buildQuestion(keys,index,used){const available=defs.filter(t=>keys.includes(t.key)),def=available[index%available.length],x=uniqueFrom(def,used);if(!x)throw new Error(`Could not create another unique ${def.label} question with the current difficulty.`);used.add(fingerprint(x));return x}
   function resetApproval(message='Draft changed. Review approval reset.'){approved.checked=false;publish.disabled=true;publishStatus.textContent=message}
-  function buildDraft(){const keys=selectedTypes();if(!keys.length){status.textContent='Choose at least one question type.';return}const count=questionCount(),ordered=shuffle(keys),questions=[],used=new Set();for(let n=0;n<count;n++)questions.push(buildQuestion(ordered,n,used));const title=titleInput.value.trim()||'Instructor Quiz';draft={version:2,id:slug(title),title,status:'draft',difficulty:difficulty(),createdAt:new Date().toISOString(),questionCount:questions.length,questionTypes:[...new Set(keys)],questions};approved.checked=false;publish.disabled=true;publishStatus.textContent='';status.textContent=`Draft created with ${questions.length} frozen ${difficulty()} questions. Duplicate prompts are automatically rerolled.`;renderReview()}
+  function buildDraft(){const keys=selectedTypes();if(!keys.length){status.textContent='Choose at least one question type.';return}const count=questionCount(),ordered=shuffle(keys),questions=[],used=new Set();try{for(let n=0;n<count;n++)questions.push(buildQuestion(ordered,n,used))}catch(err){status.textContent=`${err.message} Add another question type, lower the question count, or choose a different difficulty.`;return}const title=titleInput.value.trim()||'Instructor Quiz';draft={version:2,id:slug(title),title,status:'draft',difficulty:difficulty(),createdAt:new Date().toISOString(),questionCount:questions.length,questionTypes:[...new Set(keys)],questions};approved.checked=false;publish.disabled=true;publishStatus.textContent='';status.textContent=`Draft created with ${questions.length} frozen ${difficulty()} questions. Exact duplicate prompts are blocked.`;renderReview()}
   function renderReview(){if(!draft)return;review.hidden=false;document.querySelector('#review-title').textContent=draft.title;questionList.innerHTML=draft.questions.map((x,idx)=>`<article class="question-row"><div class="qnum">${idx+1}</div><div><p>${x.prompt}</p><div class="answer">${x.answer}${x.unit?` ${x.unit}`:''}<span class="badge">${x.type}</span></div><details><summary>Solution</summary><p>${String(x.solution).replace(/\n/g,'<br>')}</p></details></div><button class="secondary replace" data-random="${idx}">Replace</button></article>`).join('')}
-  function randomizeOne(index){const def=byKey[draft.questions[index].key],used=new Set(draft.questions.filter((_,i)=>i!==index).map(fingerprint)),replacement=uniqueFrom(def,used);draft.questions[index]=replacement;resetApproval('Question replaced with a different prompt. Review approval reset.');renderReview()}
+  function randomizeOne(index){const def=byKey[draft.questions[index].key],used=new Set(draft.questions.filter((_,i)=>i!==index).map(fingerprint)),replacement=uniqueFrom(def,used);if(!replacement){publishStatus.textContent='No additional unique question is available for that type at this difficulty.';return}draft.questions[index]=replacement;resetApproval('Question replaced with a different prompt. Review approval reset.');renderReview()}
   async function publishDraft(){if(!draft||!approved.checked)return;draft.status='published';draft.publishedAt=new Date().toISOString();publish.disabled=true;publishStatus.textContent='Publishing…';try{const res=await fetch('/instructor-api/instructor-quizzes',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(draft)});if(!res.ok)throw new Error(`HTTP ${res.status}`);const data=await res.json();publishStatus.textContent=`Published. Students can now open “${draft.title}”.`;if(data.id)draft.id=data.id}catch(err){draft.status='approved';const blob=new Blob([JSON.stringify(draft,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`${draft.id}.json`;a.click();URL.revokeObjectURL(url);publishStatus.textContent='Secure publish endpoint is not available yet, so the approved quiz JSON was downloaded instead.';publish.disabled=false}}
   document.querySelector('#generate').addEventListener('click',buildDraft);
   document.querySelector('#regenerate').addEventListener('click',buildDraft);
