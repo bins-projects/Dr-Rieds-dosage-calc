@@ -15,67 +15,22 @@
         <h1>Build a Fixed Quiz</h1>
         <p>Generate once, review the exact questions, then publish the frozen set for every student.</p>
       </header>
-
       <section class="builder" id="builder">
-        <label class="field">Quiz title
-          <input id="quiz-title" value="Dr. Reid - Dosage Check">
-        </label>
-
-        <fieldset>
-          <legend>Difficulty</legend>
-          <div class="count-row">
-            <label><input type="radio" name="difficulty" value="easy"> Easy</label>
-            <label><input type="radio" name="difficulty" value="standard" checked> Standard</label>
-            <label><input type="radio" name="difficulty" value="challenge"> Challenge</label>
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <legend>Question types</legend>
-          <div id="type-list" class="type-list"></div>
-        </fieldset>
-
-        <fieldset>
-          <legend>Questions</legend>
-          <div class="count-row">
-            <label><input type="radio" name="count" value="1"> 1</label>
-            <label><input type="radio" name="count" value="5"> 5</label>
-            <label><input type="radio" name="count" value="10"> 10</label>
-            <label><input type="radio" name="count" value="15"> 15</label>
-            <label><input type="radio" name="count" value="20" checked> 20</label>
-            <label><input type="radio" name="count" value="25"> 25</label>
-          </div>
-        </fieldset>
-
-        <div class="actions">
-          <button id="generate" class="primary">Generate Draft</button>
-          <button id="clear" class="secondary">Clear</button>
-        </div>
-        <p id="status" class="status" aria-live="polite"></p>
+        <label class="field">Quiz title<input id="quiz-title" value="Dr. Reid - Dosage Check"></label>
+        <fieldset><legend>Difficulty</legend><div class="count-row"><label><input type="radio" name="difficulty" value="easy"> Easy</label><label><input type="radio" name="difficulty" value="standard" checked> Standard</label><label><input type="radio" name="difficulty" value="challenge"> Challenge</label></div></fieldset>
+        <fieldset><legend>Question types</legend><div id="type-list" class="type-list"></div></fieldset>
+        <fieldset><legend>Questions</legend><div class="count-row"><label><input type="radio" name="count" value="1"> 1</label><label><input type="radio" name="count" value="5"> 5</label><label><input type="radio" name="count" value="10"> 10</label><label><input type="radio" name="count" value="15"> 15</label><label><input type="radio" name="count" value="20" checked> 20</label><label><input type="radio" name="count" value="25"> 25</label></div></fieldset>
+        <div class="actions"><button id="generate" class="primary">Generate Draft</button><button id="clear" class="secondary">Clear</button></div><p id="status" class="status" aria-live="polite"></p>
       </section>
-
       <section id="review" class="review" hidden>
-        <div class="review-head">
-          <div>
-            <p class="eyebrow">Draft Review</p>
-            <h2 id="review-title"></h2>
-          </div>
-          <div class="actions">
-            <button id="project-question" class="primary">Project Question</button>
-            <button id="regenerate" class="secondary">Regenerate All</button>
-          </div>
-        </div>
-        <div id="question-list"></div>
-        <div class="publish-bar">
-          <label class="approval"><input id="approved" type="checkbox"> I reviewed this exact set and approve it for students.</label>
-          <button id="publish" class="primary" disabled>Approve & Publish</button>
-        </div>
-        <p id="publish-status" class="status" aria-live="polite"></p>
+        <div class="review-head"><div><p class="eyebrow">Draft Review</p><h2 id="review-title"></h2></div><div class="actions"><button id="project-question" class="primary">Project Question</button><button id="regenerate" class="secondary">Regenerate All</button></div></div>
+        <div id="question-list"></div><div class="publish-bar"><label class="approval"><input id="approved" type="checkbox"> I reviewed this exact set and approve it for students.</label><button id="publish" class="primary" disabled>Approve & Publish</button></div><p id="publish-status" class="status" aria-live="polite"></p>
       </section>
     </section>
   </main>
   <script src="dosage-engine.js?v=20260820-1"></script>
-  <script src="instructor-v3.js?v=20260820-2"></script>
+  <script src="dosage-engine-clinical-pools.js?v=20260820-1"></script>
+  <script src="instructor-v3.js?v=20260820-3"></script>
   <script src="projector-launch.js?v=20260819-1"></script>
 </body>
 </html>
