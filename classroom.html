@@ -14,36 +14,23 @@
       <a class="home-link" href="index.html">← Home</a>
       <aside class="classroom-controls" aria-label="Question controls">
         <h1>Live Classroom</h1>
-        <label>Question type
-          <select id="type"></select>
-        </label>
-        <label>Difficulty
-          <select id="difficulty">
-            <option value="easy">Easy</option>
-            <option value="standard" selected>Standard</option>
-            <option value="challenge">Challenge</option>
-          </select>
-        </label>
+        <label>Question type<select id="type"></select></label>
+        <label>Difficulty<select id="difficulty"><option value="easy">Easy</option><option value="standard" selected>Standard</option><option value="challenge">Challenge</option></select></label>
         <div id="variables" class="variable-grid"></div>
-        <div class="control-actions">
-          <button id="new-question">New Random Question</button>
-          <button id="apply-vars">Apply My Numbers</button>
-          <button id="reveal">Reveal Answer</button>
-        </div>
+        <div class="control-actions"><button id="new-question">New Random Question</button><button id="apply-vars">Apply My Numbers</button><button id="reveal">Reveal Answer</button></div>
         <p class="control-note">Nothing here publishes or saves. Change the type or numbers as often as you want.</p>
       </aside>
       <section class="board dosage-board classroom-board" aria-live="polite">
         <div class="meta"><span>Dr. Reid · Live Classroom</span><span id="type-label"></span></div>
         <div id="problem" class="problem"></div>
-        <div class="actions">
-          <button id="show-formula" class="text-action submit">Show Formula</button>
-        </div>
+        <div class="actions"><button id="show-formula" class="text-action submit">Show Formula</button></div>
         <div id="formula-panel" class="formula-help" hidden></div>
         <div id="answer-panel" class="classroom-answer" hidden></div>
       </section>
     </section>
   </main>
   <script src="dosage-engine.js?v=20260820-1"></script>
-  <script src="classroom.js?v=20260820-2"></script>
+  <script src="dosage-engine-clinical-pools.js?v=20260820-1"></script>
+  <script src="classroom.js?v=20260820-3"></script>
 </body>
 </html>
