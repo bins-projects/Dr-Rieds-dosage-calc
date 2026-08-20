@@ -10,7 +10,78 @@ body { min-height: 100svh; }
 .home-action:hover, .home-action:focus-visible { color: #2c1a0e; outline: none; transform: rotate(-1deg) translateY(-1px); }
 .home-action.disabled { opacity: .5; text-decoration: none; cursor: default; }
 .home-action.disabled::after { opacity: .45; }
+
+.portrait-home { display: none; }
+
 @media (max-aspect-ratio: 1/1) {
-  .home-shell { align-content: start; }
-  .home-stage { width: 177.78svh; max-width: none; transform-origin: top left; }
+  .home-shell { display: block; overflow-x: hidden; background: #24170f; }
+  .home-stage { display: none; }
+  .portrait-home {
+    display: grid;
+    grid-template-rows: minmax(150px, 25svh) auto minmax(230px, 38svh);
+    min-height: 100svh;
+    width: 100%;
+    overflow: hidden;
+    background: linear-gradient(#f3d69b 0 38%, #dba66b 70%, #2f2018 100%);
+  }
+  .portrait-logo {
+    position: relative;
+    overflow: hidden;
+    background-image: url("assets/home-screen.png?v=20260818-8");
+    background-repeat: no-repeat;
+    background-size: 190vw auto;
+    background-position: 79% 5%;
+    border-bottom: 1px solid rgba(73,44,24,.24);
+  }
+  .portrait-logo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(27,19,14,.05), rgba(255,244,214,.22));
+    pointer-events: none;
+  }
+  .portrait-actions {
+    z-index: 2;
+    width: min(88vw, 430px);
+    justify-self: center;
+    align-self: center;
+    display: grid;
+    gap: 11px;
+    padding: 18px 22px 20px;
+    margin: 12px 0;
+    border: 1px solid rgba(83,54,30,.22);
+    border-radius: 18px;
+    background: rgba(255,248,226,.9);
+    box-shadow: 0 10px 28px rgba(49,27,15,.18);
+    backdrop-filter: blur(2px);
+  }
+  .portrait-action {
+    display: block;
+    width: max-content;
+    max-width: 100%;
+    color: #4b2d18;
+    text-decoration: none;
+    font: 700 clamp(20px, 5.8vw, 29px)/1.12 "Segoe Print", "Bradley Hand", "Comic Sans MS", cursive;
+    text-shadow: 0 1px rgba(255,255,255,.5);
+    transform: rotate(-1deg);
+  }
+  .portrait-action::after {
+    content: "";
+    display: block;
+    height: 2px;
+    margin-top: .1em;
+    background: rgba(75,45,24,.5);
+    transform: rotate(.4deg);
+  }
+  .portrait-action.primary { font-size: clamp(25px, 7vw, 34px); }
+  .portrait-action.disabled { opacity: .48; cursor: default; }
+  .portrait-reed {
+    align-self: stretch;
+    background-image: url("assets/dosage-lab-classroom.png?v=20260819-1");
+    background-repeat: no-repeat;
+    background-size: 175vw auto;
+    background-position: 86% 47%;
+    border-top: 1px solid rgba(73,44,24,.2);
+    box-shadow: inset 0 18px 28px rgba(255,245,220,.16);
+  }
 }
