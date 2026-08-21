@@ -27,7 +27,7 @@ body { min-height: 100svh; }
     width: 100vw;
     min-height: 100svh;
     overflow: hidden;
-    background: url("assets/home-screen-portrait.svg?v=20260820-1") center top / cover no-repeat;
+    background: url("assets/home-screen-mobile.webp?v=20260820-1") center top / cover no-repeat;
   }
   .portrait-actions {
     position: absolute;
