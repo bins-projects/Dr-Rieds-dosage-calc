@@ -32,7 +32,7 @@ body { min-height: 100svh; }
   .portrait-actions {
     position: absolute;
     z-index: 3;
-    left: 10.5%;
+    left: 15%;
     top: 31.5%;
     width: 56%;
     display: grid;
@@ -82,7 +82,7 @@ body { min-height: 100svh; }
 }
 
 @media (max-aspect-ratio: 3/4) {
-  .portrait-actions { left: 10%; top: 31.5%; width: 57%; }
+  .portrait-actions { left: 15%; top: 31.5%; width: 57%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
