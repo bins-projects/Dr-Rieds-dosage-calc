@@ -23,3 +23,20 @@
 @keyframes feedbackIn{from{opacity:.2;transform:translateY(4px)}to{opacity:1;transform:none}}
 @media(max-aspect-ratio:1/1){.translation-line{gap:2px}.translation-term{padding:3px 2px}.translation-label{font-size:clamp(6px,1.7vw,9px)}.translation-value{font-size:clamp(8px,2.25vw,12px)}.translation-op{font-size:clamp(8px,2vw,11px);padding-bottom:5px}.feedback-question,.answer-summary{font-size:clamp(8px,2vw,11px)}}
 @media(prefers-reduced-motion:reduce){.scroll-cue,.feedback-screen{animation:none}}
+
+/* Clear, forgiving interaction targets throughout the student-facing calculator. */
+.text-action,.submit{display:inline-flex;align-items:center;justify-content:center;min-height:clamp(28px,2.35vw,40px);padding:clamp(5px,.48vw,8px) clamp(6px,.62vw,11px);border-radius:7px}
+.text-action:hover,.text-action:focus-visible{background:rgba(232,241,251,.64);outline:2px solid rgba(36,79,131,.36);outline-offset:2px}
+.text-action:disabled{opacity:.5;cursor:not-allowed}
+.actions,.answer-row{column-gap:clamp(12px,1.15vw,20px);row-gap:clamp(8px,.8vw,14px)}
+.choice-row{column-gap:clamp(12px,1.2vw,21px);row-gap:clamp(7px,.7vw,12px)}
+.choice{min-height:clamp(28px,2.3vw,40px);padding:clamp(3px,.32vw,6px) clamp(5px,.52vw,9px);border-radius:7px}
+.choice:hover,.choice:focus-within{background:rgba(232,241,251,.5);outline:2px solid rgba(36,79,131,.25);outline-offset:1px}
+.choice input{flex:0 0 auto;width:clamp(17px,1.4vw,22px);height:clamp(17px,1.4vw,22px)}
+.field select{min-height:clamp(32px,2.5vw,42px);padding:4px 8px;border:1px solid rgba(49,67,89,.38);border-radius:7px;background:rgba(255,255,255,.72);color:#24364b}
+.answer-input{min-height:clamp(34px,2.7vw,45px)}
+.safety-choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(10px,1.15vw,20px);margin:clamp(8px,.9vw,15px) 0}
+.safety-choice,.answer-row>[data-safety]{width:100%;min-height:clamp(38px,3vw,50px);padding:clamp(7px,.7vw,12px);border:1px solid rgba(36,79,131,.38);border-radius:10px;background:rgba(238,244,250,.68);text-decoration:none;white-space:nowrap}
+.safety-choice:hover,.safety-choice:focus-visible,.answer-row>[data-safety]:hover,.answer-row>[data-safety]:focus-visible{background:rgba(218,233,247,.9);border-color:#244f83}
+.home-link:focus-visible{outline:2px solid #fff;outline-offset:3px}
+@media(pointer:coarse){.text-action,.submit,.choice,.field select,.answer-input,.home-link{min-height:44px}.home-link{display:inline-flex;align-items:center;padding:8px 11px}.safety-choice,.answer-row>[data-safety]{min-height:48px}}
