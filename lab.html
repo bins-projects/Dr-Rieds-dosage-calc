@@ -4,13 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Dr. Reid's Dosage Calc Pro</title>
-  <link rel="stylesheet" href="lab.css?v=20260819-4">
+  <link rel="stylesheet" href="lab.css?v=20260820-6">
 </head>
 <body>
   <main class="dosage-lab-shell">
     <section class="dosage-lab-stage" aria-label="Dosage calculation classroom">
       <a class="home-link" href="index.html">← Home</a>
-      <section id="app" class="board dosage-board" aria-live="polite"></section>
+      <section id="app" class="board dosage-board" aria-live="polite" tabindex="-1"></section>
+      <button id="scroll-cue" class="scroll-cue" type="button" aria-label="Show more session options" hidden><span aria-hidden="true">⌄</span></button>
     </section>
   </main>
   <script src="dosage-engine.js?v=20260820-1"></script>
@@ -18,6 +19,6 @@
   <script src="dosage-engine-expanded-clinical.js?v=20260820-1"></script>
   <script src="dosage-engine-rate-expansion.js?v=20260820-1"></script>
   <script src="dosage-families.js?v=20260820-1"></script>
-  <script src="lab.js?v=20260820-5"></script>
+  <script src="lab.js?v=20260820-7"></script>
 </body>
 </html>
