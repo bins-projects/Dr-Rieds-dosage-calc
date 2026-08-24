@@ -10,7 +10,7 @@
   <main class="home-shell">
     <section class="home-stage" aria-label="Dr. Reid's Dosage Calc Pro">
       <nav class="home-actions" aria-label="Dosage calculation options">
-        <a class="home-action primary" href="lab.html">Start Session</a>
+        <a class="home-action primary start-session" href="lab.html">Start Session</a>
         <a class="home-action guide" href="how-to.html">How to Use</a>
         <a class="home-action" href="lab.html#formulas">Formula Review</a>
         <a class="home-action" href="instructor-quizzes.html">Instructor Quizzes</a>
@@ -19,12 +19,46 @@
 
     <section class="portrait-home" aria-label="Dr. Reid's Dosage Calc Pro mobile home">
       <nav class="portrait-actions" aria-label="Dosage calculation options">
-        <a class="portrait-action primary" href="lab.html">Start Session</a>
+        <a class="portrait-action primary start-session" href="lab.html">Start Session</a>
         <a class="portrait-action guide" href="how-to.html"><span class="new-here">New here?</span>How to Use</a>
         <a class="portrait-action" href="lab.html#formulas">Formula Review</a>
         <a class="portrait-action" href="instructor-quizzes.html">Instructor Quizzes</a>
       </nav>
     </section>
   </main>
+
+  <script>
+    (() => {
+      const greeting = new Audio('assets/Drreid.mp3?v=20260824-1');
+      greeting.preload = 'auto';
+      greeting.volume = 0.8;
+
+      document.querySelectorAll('.start-session').forEach((button) => {
+        button.addEventListener('click', (event) => {
+          event.preventDefault();
+          const destination = button.href;
+          let navigated = false;
+
+          const go = () => {
+            if (navigated) return;
+            navigated = true;
+            window.location.href = destination;
+          };
+
+          greeting.currentTime = 0;
+          greeting.addEventListener('ended', go, { once: true });
+          greeting.addEventListener('error', go, { once: true });
+
+          const playAttempt = greeting.play();
+          if (playAttempt && typeof playAttempt.catch === 'function') {
+            playAttempt.catch(go);
+          }
+
+          // Fail-safe: never hold the user on the home screen if audio stalls.
+          window.setTimeout(go, 2200);
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
