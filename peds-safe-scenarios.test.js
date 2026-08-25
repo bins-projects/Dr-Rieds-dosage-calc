@@ -11,6 +11,7 @@ const E=window.DosageEngine;
 const expectedDrugs=new Set(['cefazolin','ceftazidime','ceftriaxone','cephalexin','clindamycin','gentamicin','ibuprofen','tobramycin']);
 const seen=new Set();
 const distribution={safe:0,'too low':0,'too high':0};
+const finalRound=n=>Math.round(Math.trunc((Number(n)+Number.EPSILON)*100)/10)/10;
 
 for(let i=0;i<4000;i++){
   const q=E.generate('peds-safe-range','standard'),v=q.vars;
@@ -20,11 +21,18 @@ for(let i=0;i<4000;i++){
   const maximum=v.maxDaily?Math.min(weightMaximum,v.maxDaily/v.doses):weightMaximum;
   const expected=v.order<minimum?'too low':v.order>maximum?'too high':'safe';
   assert.equal(q.answer,expected);
-  assert.equal(v.ml,Math.round(v.order*v.qty/v.have*10)/10);
+  assert.equal(v.ml,finalRound(v.order*v.qty/v.have));
+  assert.equal(v.minMl,finalRound(minimum*v.qty/v.have));
+  assert.equal(v.maxMl,finalRound(maximum*v.qty/v.have));
+  assert.match(q.solution,/Safe dose range:/);
+  assert.match(q.solution,/Safe volume range:/);
+  assert.match(q.solution,/Ordered dose:/);
   assert.match(q.prompt,/Calculate the volume/);
   const rebuilt=E.rebuild('peds-safe-range',v,q);
   assert.equal(rebuilt.answer,q.answer);
   assert.equal(rebuilt.vars.ml,v.ml);
+  assert.equal(rebuilt.vars.minMl,v.minMl);
+  assert.equal(rebuilt.vars.maxMl,v.maxMl);
 }
 
 assert.deepEqual(seen,expectedDrugs);
