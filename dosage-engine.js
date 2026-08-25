@@ -1,6 +1,8 @@
 (() => {
   const pick=a=>a[Math.floor(Math.random()*a.length)];
   const round=(n,p=1)=>{const f=10**p;return Math.round((Number(n)+Number.EPSILON)*f)/f};
+  // Class rule: ignore digits after hundredths, then round the final answer to tenths.
+  const finalRound=n=>Math.round((Math.trunc((Number(n)+Number.EPSILON)*100)/100)*10)/10;
   const randInt=(min,max,step=1)=>min+Math.floor(Math.random()*(Math.floor((max-min)/step)+1))*step;
   const randDec=(min,max,p=1)=>round(min+Math.random()*(max-min),p);
   let currentDifficulty='standard';
@@ -87,5 +89,5 @@
     ['Rate-based infusion','Match the medication order time unit first, then divide by concentration'],['mEq to mL','ordered mEq ÷ mEq/mL = mL'],['Daily divided dose','mg/kg/day × kg ÷ doses/day = mg/dose']
   ];
   function generate(key,d='standard'){currentDifficulty=['easy','standard','challenge'].includes(d)?d:'standard';const def=byKey[key];if(!def)throw new Error(`Unknown dosage type: ${key}`);return def.random()}
-  window.DosageEngine={version:2,types:defs.map(({key,label})=>({key,label})),formulaReview,generate,round};
+  window.DosageEngine={version:2,types:defs.map(({key,label})=>({key,label})),formulaReview,generate,round,finalRound};
 })();
